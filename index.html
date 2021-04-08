@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acende lâmpada</title>
+</head>
+<body>
+    <h1>Testando Lâmpada</h1>
+    <img id="luz" src="lampada-apagada.jpg" onmousemove="lampada(1)" onmouseout="lampada(2)" onclick="lampada(3)">
+   <p id="resultado"></p>
+   <button id="botao" onclick="lampadaapagada()" style="display: none;">Restaure a lâmpada</button>
+   <script>
+       
+        let quebrada = false
+        let div = document.getElementById("resultado");
+        function lampada(tipo) {
+            if (!quebrada){
+                if (tipo == 1){
+                    document.getElementById("luz").src = "lampada-acesa.jpg";
+                    div.innerHTML = "Lâmpada acesa";
+                
+                }
+                if (tipo == 2){
+                    document.getElementById("luz").src = "lampada-apagada.jpg";
+                    div.innerHTML = "Lâmpada apagada";
+                    
+                }
+                if (tipo == 3){
+                    document.getElementById("luz").src = "lampada-quebrada.jpg";
+                    quebrada = true
+                    div.innerHTML = "Lâmpada quebrada";
+                    document.getElementById("botao").style.display = "inline";
+                }
+            } 
+            else{
+                document.getElementById("luz").src = "lampada-quebrada.jpg";
+                div.innerHTML = "Lâmpada quebrada";
+            } 
+        }
+        function lampadaapagada() {
+            quebrada = false;
+            lampada("2");
+            document.getElementById("botao").style.display = "none";
+        }
+    
+    </script>   
+</body>
+</html>
